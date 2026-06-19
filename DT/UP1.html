@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prayers for the Valley — Sacred Gate Codes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root{
+    --bg:#0D0D0D;
+    --bg-elevated:#151515;
+    --bg-card:#1A1715;
+    --text:#F5F0EB;
+    --text-dim:#B8AFA5;
+    --crimson:#8B0000;
+    --crimson-glow:#A01010;
+    --gold:#C9A84C;
+    --gold-dim:#A08A3E;
+    --divider:rgba(201,168,76,0.15);
+  }
+
+  html{font-size:18px;scroll-behavior:smooth}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Cormorant Garamond','Georgia',serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .page{
+    max-width:640px;
+    margin:0 auto;
+    padding:3rem 1.25rem 4rem;
+  }
+
+  /* ── Typography ── */
+  h1,h2,h3{
+    font-family:'Playfair Display','Georgia',serif;
+    line-height:1.3;
+    font-weight:600;
+  }
+
+  .headline{
+    font-size:clamp(1.55rem,5vw,2.1rem);
+    text-align:center;
+    margin-bottom:1rem;
+    color:var(--text);
+    letter-spacing:-0.01em;
+  }
+
+  .subheadline{
+    text-align:center;
+    font-size:1.1rem;
+    color:var(--text-dim);
+    max-width:520px;
+    margin:0 auto 2.5rem;
+    font-style:italic;
+  }
+
+  /* ── Divider ── */
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin:2.5rem 0;
+  }
+  .divider::before,.divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--divider);
+  }
+  .divider-icon{
+    color:var(--gold-dim);
+    font-size:0.85rem;
+    letter-spacing:0.3em;
+    font-family:'Playfair Display',serif;
+  }
+
+  /* ── Scripture ── */
+  .scripture{
+    text-align:center;
+    font-style:italic;
+    color:var(--gold);
+    font-size:1.05rem;
+    margin:2rem auto;
+    max-width:480px;
+    line-height:1.7;
+  }
+  .scripture-ref{
+    display:block;
+    margin-top:0.5rem;
+    font-size:0.85rem;
+    color:var(--gold-dim);
+    font-style:normal;
+    letter-spacing:0.05em;
+  }
+
+  /* ── Prayer list ── */
+  .prayer-list{
+    list-style:none;
+    margin:2rem 0;
+  }
+  .prayer-item{
+    padding:1rem 0;
+    border-bottom:1px solid var(--divider);
+  }
+  .prayer-item:last-child{border-bottom:none}
+
+  .prayer-number{
+    display:inline-block;
+    font-family:'Playfair Display',serif;
+    font-size:0.8rem;
+    color:var(--gold-dim);
+    margin-bottom:0.2rem;
+    letter-spacing:0.08em;
+  }
+  .prayer-name{
+    font-family:'Playfair Display',serif;
+    font-size:1.15rem;
+    font-weight:600;
+    color:var(--text);
+    display:block;
+    margin-bottom:0.3rem;
+  }
+  .prayer-desc{
+    font-size:0.95rem;
+    color:var(--text-dim);
+    line-height:1.6;
+  }
+
+  /* ── Highlight card ── */
+  .highlight{
+    background:var(--bg-card);
+    border-left:3px solid var(--crimson);
+    padding:1.75rem 1.5rem;
+    margin:2.5rem 0;
+    border-radius:0 6px 6px 0;
+  }
+  .highlight-label{
+    font-family:'Playfair Display',serif;
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:var(--crimson-glow);
+    margin-bottom:0.75rem;
+  }
+  .highlight h3{
+    font-size:1.2rem;
+    margin-bottom:0.75rem;
+    color:var(--text);
+  }
+  .highlight p{
+    font-size:1rem;
+    color:var(--text-dim);
+    line-height:1.7;
+  }
+
+  /* ── Body copy ── */
+  .copy{
+    font-size:1.05rem;
+    color:var(--text-dim);
+    line-height:1.8;
+    margin-bottom:1.5rem;
+  }
+  .copy strong{
+    color:var(--text);
+    font-weight:500;
+  }
+
+  /* ── Section title ── */
+  .section-title{
+    font-size:1.35rem;
+    text-align:center;
+    margin-bottom:1.5rem;
+    color:var(--text);
+  }
+
+  /* ── CTA area ── */
+  .cta-section{
+    text-align:center;
+    margin:3rem 0 1.5rem;
+  }
+  .cta-button{
+    display:inline-block;
+    background:var(--crimson);
+    color:#fff;
+    font-family:'Playfair Display',serif;
+    font-size:1.1rem;
+    font-weight:600;
+    padding:1rem 2.5rem;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:background 0.3s ease, box-shadow 0.3s ease;
+    width:100%;
+    max-width:420px;
+    line-height:1.4;
+  }
+  .cta-button:hover{
+    background:var(--crimson-glow);
+    box-shadow:0 4px 24px rgba(139,0,0,0.3);
+  }
+
+  .cta-price{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:0.9rem;
+    font-weight:400;
+    margin-top:0.3rem;
+    opacity:0.85;
+  }
+
+  .decline{
+    display:block;
+    text-align:center;
+    margin-top:1.25rem;
+    color:var(--text-dim);
+    font-size:0.9rem;
+    text-decoration:none;
+    opacity:0.7;
+    transition:opacity 0.2s;
+  }
+  .decline:hover{opacity:1}
+
+  /* ── Pastoral note ── */
+  .pastoral-note{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--text-dim);
+    opacity:0.6;
+    margin-top:2.5rem;
+    font-style:italic;
+    max-width:440px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.6;
+  }
+
+  /* ── Responsive ── */
+  @media(max-width:480px){
+    html{font-size:16px}
+    .page{padding:2rem 1rem 3rem}
+    .highlight{padding:1.25rem 1.15rem}
+    .cta-button{padding:1rem 1.5rem;font-size:1.05rem}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Scripture opening -->
+  <div class="scripture">
+    "He is close to the brokenhearted and saves those
+    who are crushed in spirit."
+    <span class="scripture-ref">Psalm 34:18</span>
+  </div>
+
+  <!-- Headline -->
+  <h1 class="headline">
+    There are moments when you cannot wait 28 days.
+  </h1>
+
+  <p class="subheadline">
+    The diagnosis comes tomorrow. The surgery is Tuesday.
+    Sleep will not come tonight. These 14 prayers were recorded
+    for those exact moments.
+  </p>
+
+  <div class="divider"><span class="divider-icon">&#10013;</span></div>
+
+  <!-- Opening copy -->
+  <p class="copy">
+    You just made an important decision. The Sacred Gate Codes
+    will walk you through a complete journey of spiritual
+    restoration — one prayer at a time, one gate at a time.
+  </p>
+
+  <p class="copy">
+    But the valley does not wait for a journey to finish.
+    <strong>The pain is here now.</strong> The phone rings with
+    news you were not ready for. The night comes and sleep does
+    not. The weight on your chest has a name you have not spoken
+    out loud yet.
+  </p>
+
+  <p class="copy">
+    <strong>Prayers for the Valley</strong> is not a replacement
+    for the Sacred Gate Codes. It is the emergency prayer you
+    reach for when the moment demands a specific word — right
+    now, on your phone, in Bishop Stefan's voice, praying
+    alongside you as if he were sitting in the room.
+  </p>
+
+  <div class="divider"><span class="divider-icon">&#10013;</span></div>
+
+  <!-- Section: The 14 Prayers -->
+  <h2 class="section-title">14 Prayers for the Hardest Moments</h2>
+
+  <p class="copy" style="text-align:center;font-style:italic;color:var(--gold-dim);font-size:0.95rem;margin-bottom:1.5rem;">
+    Each prayer is an audio recording with Bishop Stefan
+    praying alongside you, plus a printable manuscript
+    you can hold in your hands.
+  </p>
+
+  <ul class="prayer-list">
+    <li class="prayer-item">
+      <span class="prayer-number">I</span>
+      <span class="prayer-name">Prayer for the Day of Diagnosis</span>
+      <span class="prayer-desc">When the doctor gives you the news and the ground disappears beneath you.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">II</span>
+      <span class="prayer-name">Prayer Before Surgery</span>
+      <span class="prayer-desc">To consecrate the hands of the surgeon and the procedure that lies ahead.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">III</span>
+      <span class="prayer-name">Prayer at 3AM</span>
+      <span class="prayer-desc">For the ones who wake in the dark with pain, fear, or a mind that will not rest.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">IV</span>
+      <span class="prayer-name">Prayer for the Exhausted Prayer Warrior</span>
+      <span class="prayer-desc">For the one who has been faithful for years and still waits.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">V</span>
+      <span class="prayer-name">Prayer for Grief</span>
+      <span class="prayer-desc">For the loss that shook your faith and the absence that never fills.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">VI</span>
+      <span class="prayer-name">Prayer for the Caregiver</span>
+      <span class="prayer-desc">For the one who holds everyone else together — and has no one holding them.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">VII</span>
+      <span class="prayer-name">Prayer to Consecrate My Treatment</span>
+      <span class="prayer-desc">Bless the hands of my doctors and the medicine that enters my body.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">VIII</span>
+      <span class="prayer-name">Prayer for Depression</span>
+      <span class="prayer-desc">When the darkness is more than sadness and you cannot find the way out.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">IX</span>
+      <span class="prayer-name">Prayer for Anxiety</span>
+      <span class="prayer-desc">When the chest tightens, the mind races, and peace feels unreachable.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">X</span>
+      <span class="prayer-name">Prayer for Financial Desperation</span>
+      <span class="prayer-desc">When the bills arrive and the provision has not.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">XI</span>
+      <span class="prayer-name">Prayer for a Broken Marriage</span>
+      <span class="prayer-desc">When the covenant is fraying and you do not know how to hold on.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">XII</span>
+      <span class="prayer-name">Prayer for the Lonely</span>
+      <span class="prayer-desc">For the one who feels that no one truly sees them.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">XIII</span>
+      <span class="prayer-name">Prayer for the One Who Lost Faith</span>
+      <span class="prayer-desc">When the pain made you doubt the One you once trusted completely.</span>
+    </li>
+    <li class="prayer-item">
+      <span class="prayer-number">XIV</span>
+      <span class="prayer-name">Prayer of Thanksgiving</span>
+      <span class="prayer-desc">When the breakthrough begins — to seal it with gratitude before the enemy steals your testimony.</span>
+    </li>
+  </ul>
+
+  <div class="divider"><span class="divider-icon">&#10013;</span></div>
+
+  <!-- Highlight: Prayer #4 -->
+  <div class="highlight">
+    <div class="highlight-label">A word for you</div>
+    <h3>Prayer for the Exhausted Prayer Warrior</h3>
+    <p>
+      You have been praying. For months. For years. Friends
+      are praying. Family is praying. And nothing seems to
+      move. You have not lost your faith — but you are
+      running out of strength.
+    </p>
+    <p style="margin-top:0.75rem">
+      This prayer was recorded for you. Not the one who just
+      started praying. The one who never stopped — and is
+      tired. Bishop Stefan prays this one as if he knows
+      exactly where you are. Because he does.
+    </p>
+  </div>
+
+  <!-- Value block -->
+  <p class="copy">
+    You have already invested in the 28-day journey.
+    <strong>Prayers for the Valley is the emergency kit
+    for the days in between</strong> — 14 specific prayers
+    in audio with Bishop Stefan, plus the printable
+    Sacred Manuscript so you can hold the words in your
+    hands during the hardest moments.
+  </p>
+
+  <div class="scripture">
+    "I will fear no evil, for you are with me;
+    your rod and your staff, they comfort me."
+    <span class="scripture-ref">Psalm 23:4</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <a href="#" class="cta-button">
+      Yes, add Prayers for the Valley
+      <span class="cta-price">One-time payment of $69</span>
+    </a>
+    <a href="#" class="decline">No thanks, I will continue with the Sacred Gate Codes only</a>
+  </div>
+
+  <!-- Pastoral note -->
+  <p class="pastoral-note">
+    These prayers do not replace medical treatment.
+    They consecrate it. If you are in crisis, please
+    also seek the care of a qualified professional.
+  </p>
+
+</div>
+</body>
+</html>
