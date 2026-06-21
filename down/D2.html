@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Final Offer — Seven Frequencies of Creation</title>
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,6 +22,8 @@
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   .page-wrapper {
@@ -28,7 +35,6 @@
     gap: 20px;
   }
 
-  /* ═══ WAIT BADGE ═══ */
   .wait-badge {
     font-family: 'Cinzel', serif;
     font-weight: 800;
@@ -39,13 +45,7 @@
     padding: 8px 24px;
     border: 2px solid #c44040;
     border-radius: 6px;
-    -webkit-animation: badge-pulse 1.5s ease-in-out infinite;
     animation: badge-pulse 1.5s ease-in-out infinite;
-  }
-
-  @-webkit-keyframes badge-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
   }
 
   @keyframes badge-pulse {
@@ -53,7 +53,6 @@
     50% { opacity: 0.6; }
   }
 
-  /* ═══ HEADLINE ═══ */
   .headline {
     font-family: 'Cinzel', serif;
     font-weight: 800;
@@ -63,14 +62,12 @@
     line-height: 1.3;
   }
 
-  /* ═══ DIVIDER ═══ */
   .divider {
     width: 80px;
     height: 1px;
     background: linear-gradient(90deg, transparent, #8a7030, transparent);
   }
 
-  /* ═══ BODY COPY ═══ */
   .body-copy {
     font-size: 16px;
     line-height: 1.7;
@@ -78,16 +75,13 @@
     text-align: center;
   }
 
-  .body-copy strong {
-    color: #e8d48b;
-  }
+  .body-copy strong { color: #e8d48b; }
 
   .highlight {
     color: #ffffff;
     font-weight: 600;
   }
 
-  /* ═══ QUOTE ═══ */
   .sacred-quote {
     font-size: 18px;
     font-style: italic;
@@ -99,7 +93,6 @@
     line-height: 1.5;
   }
 
-  /* ═══ PRICE BLOCK ═══ */
   .price-block {
     display: flex;
     flex-direction: column;
@@ -146,7 +139,6 @@
     font-style: italic;
   }
 
-  /* ═══ GREEN BUTTON ═══ */
   .cta-button {
     position: relative;
     display: flex;
@@ -167,13 +159,7 @@
       0 0 60px rgba(76, 175, 80, 0.1),
       0 4px 15px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    -webkit-animation: button-pulse 2s ease-in-out infinite;
     animation: button-pulse 2s ease-in-out infinite;
-  }
-
-  @-webkit-keyframes button-pulse {
-    0%, 100% { -webkit-transform: scale(1); transform: scale(1); }
-    50% { -webkit-transform: scale(1.04); transform: scale(1.04); }
   }
 
   @keyframes button-pulse {
@@ -189,14 +175,7 @@
     width: 60%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    -webkit-animation: shimmer 3s ease-in-out infinite;
     animation: shimmer 3s ease-in-out infinite;
-  }
-
-  @-webkit-keyframes shimmer {
-    0% { left: -100%; }
-    50% { left: 150%; }
-    100% { left: 150%; }
   }
 
   @keyframes shimmer {
@@ -227,7 +206,6 @@
     text-align: center;
   }
 
-  /* ═══ SECURITY ═══ */
   .security-bar {
     display: flex;
     align-items: center;
@@ -244,7 +222,6 @@
     letter-spacing: 0.5px;
   }
 
-  /* ═══ GUARANTEE ═══ */
   .guarantee {
     display: flex;
     align-items: center;
@@ -265,7 +242,6 @@
 
   .guarantee-text strong { color: #c9a84c; }
 
-  /* ═══ DECLINE ═══ */
   .decline-link {
     color: #5a5448;
     font-size: 12px;
@@ -277,7 +253,6 @@
 
   .decline-link:hover { color: #7a7060; }
 
-  /* ═══ URGENCY ═══ */
   .urgency {
     font-size: 12px;
     color: #c44040;
@@ -286,7 +261,6 @@
     letter-spacing: 0.5px;
   }
 
-  /* ═══ KIWIFY WRAPPER ═══ */
   .kiwify-section {
     width: 100%;
     display: flex;
@@ -350,7 +324,7 @@
     <span class="savings">You save 50% — this is the lowest price ever offered</span>
   </div>
 
-  <!-- ═══ KIWIFY UPSELL WRAPPER ═══ -->
+  <!-- KIWIFY UPSELL SDK -->
   <div class="kiwify-section" id="kiwify-upsell-OrOcxPa" data-upsell-url="https://appsell-software.com/login_app/sacred-gate-codes" data-downsell-url="https://appsell-software.com/login_app/sacred-gate-codes">
 
     <button id="kiwify-upsell-trigger-OrOcxPa" class="cta-button">
@@ -379,6 +353,88 @@
 </div>
 
 <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+
+<!-- Anti-DevTools -->
+<script>
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12') { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); return false; }
+    if (e.ctrlKey && ['U','S'].includes(e.key.toUpperCase())) { e.preventDefault(); return false; }
+  });
+  document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+</script>
+
+<!-- ============================================ -->
+<!-- HORIZON TRACKING — Downsell 2               -->
+<!-- ============================================ -->
+<script>
+(function(){
+  var BEACON_URL = 'https://n8n.imhorizongroup.site/webhook/horizon-tracking';
+  var PAGE_SLUG = 'd2';
+
+  function gc(n) {
+    var m = document.cookie.match(new RegExp('(^| )' + n + '=([^;]+)'));
+    return m ? decodeURIComponent(m[2]) : '';
+  }
+
+  var vid = gc('_hz_vid') || localStorage.getItem('_vid') || '';
+  if (!vid) {
+    vid = 'vid_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
+    localStorage.setItem('_vid', vid);
+  }
+
+  var fbc = gc('_fbc') || '';
+  var fbp = gc('_fbp') || '';
+
+  function eid(name) {
+    return name + '_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+  }
+
+  function send(eventName, extra) {
+    var payload = {
+      vi: vid,
+      en: eventName,
+      ei: eid(eventName),
+      et: Math.floor(Date.now() / 1000),
+      fc: fbc,
+      fp: fbp,
+      ua: navigator.userAgent,
+      pu: window.location.href,
+      pr: document.referrer,
+      sl: PAGE_SLUG,
+      cd: extra || {}
+    };
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(BEACON_URL, new Blob([JSON.stringify(payload)], {type: 'text/plain'}));
+    } else {
+      fetch(BEACON_URL, {method:'POST', body:JSON.stringify(payload), mode:'no-cors', keepalive:true}).catch(function(){});
+    }
+  }
+
+  /* PageView imediato */
+  send('PageView');
+
+  /* ViewContent após 5s */
+  setTimeout(function() { send('ViewContent'); }, 5000);
+
+  /* Rastrear clique no CTA */
+  var ctaBtn = document.getElementById('kiwify-upsell-trigger-OrOcxPa');
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', function() {
+      send('InitiateCheckout', {value: 14.50, currency: 'USD', content_name: 'Downsell 2 - Seven Frequencies'});
+    });
+  }
+
+  /* Rastrear clique no decline */
+  var declineBtn = document.getElementById('kiwify-upsell-cancel-trigger-OrOcxPa');
+  if (declineBtn) {
+    declineBtn.addEventListener('click', function() {
+      send('ViewContent', {action: 'decline_d2'});
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
