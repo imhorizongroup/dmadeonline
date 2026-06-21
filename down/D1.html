@@ -274,6 +274,15 @@
     letter-spacing: 0.5px;
   }
 
+  /* ═══ KIWIFY WRAPPER ═══ */
+  .kiwify-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
   @media (max-width: 480px) {
     .headline { font-size: 22px; }
     .body-copy { font-size: 14px; }
@@ -324,29 +333,35 @@
     <span class="savings">You save 50% — this page only</span>
   </div>
 
-  <a href="https://go.centerpag.com/PPU38CQCOTE?upsell=true" class="cta-button">
-    <span class="cta-check">✅</span>
-    <span class="cta-main-text">YES! Give Me The Song of the Angels<br>for Just $34.50</span>
-    <span class="cta-sub-text">Instant access — one-time payment — 60-day guarantee</span>
-  </a>
+  <!-- ═══ KIWIFY UPSELL WRAPPER ═══ -->
+  <div class="kiwify-section" id="kiwify-upsell-HGIpBds" data-upsell-url="" data-downsell-url="https://divinemade.online/down/D2">
 
-  <div class="security-bar">
-    <span class="security-item">🔒 Secure Checkout</span>
-    <span class="security-item">🛡️ 60-Day Guarantee</span>
-    <span class="security-item">⚡ Instant Access</span>
+    <button id="kiwify-upsell-trigger-HGIpBds" class="cta-button">
+      <span class="cta-check">✅</span>
+      <span class="cta-main-text">YES! Give Me The Song of the Angels<br>for Just $34.50</span>
+      <span class="cta-sub-text">Instant access — one-time payment — 60-day guarantee</span>
+    </button>
+
+    <div class="security-bar">
+      <span class="security-item">🔒 Secure Checkout</span>
+      <span class="security-item">🛡️ 60-Day Guarantee</span>
+      <span class="security-item">⚡ Instant Access</span>
+    </div>
+
+    <div class="guarantee">
+      <span class="guarantee-icon">🛡️</span>
+      <span class="guarantee-text"><strong>60-Day Money Back Guarantee.</strong> Try it completely risk-free. If you don't feel a profound spiritual change, get 100% of your money back. No questions asked.</span>
+    </div>
+
+    <p class="urgency">⚠️ This half-price offer disappears the moment you leave this page.</p>
+
+    <div id="kiwify-upsell-cancel-trigger-HGIpBds" class="decline-link">No thanks, I'll pray without the frequencies.</div>
+
   </div>
-
-  <div class="guarantee">
-    <span class="guarantee-icon">🛡️</span>
-    <span class="guarantee-text"><strong>60-Day Money Back Guarantee.</strong> Try it completely risk-free. If you don't feel a profound spiritual change, get 100% of your money back. No questions asked.</span>
-  </div>
-
-  <p class="urgency">⚠️ This half-price offer disappears the moment you leave this page.</p>
-
-  <!-- DECLINE: change href to your Upsell 2 page URL -->
-  <a href="https://holymade.online/up/back" class="decline-link">No thanks, I'll pray without the frequencies.</a>
 
 </div>
+
+<script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
 </body>
 </html>
