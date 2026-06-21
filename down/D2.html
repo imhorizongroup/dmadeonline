@@ -286,6 +286,15 @@
     letter-spacing: 0.5px;
   }
 
+  /* ═══ KIWIFY WRAPPER ═══ */
+  .kiwify-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
   @media (max-width: 480px) {
     .headline { font-size: 22px; }
     .body-copy { font-size: 14px; }
@@ -341,29 +350,35 @@
     <span class="savings">You save 50% — this is the lowest price ever offered</span>
   </div>
 
-  <a href="https://go.centerpag.com/PPU38CQCOTT?upsell=true" class="cta-button">
-    <span class="cta-check">✅</span>
-    <span class="cta-main-text">YES! Unlock All Seven Frequencies<br>for Just $14.50</span>
-    <span class="cta-sub-text">Complete the full divine secret — one-time payment — 60-day guarantee</span>
-  </a>
+  <!-- ═══ KIWIFY UPSELL WRAPPER ═══ -->
+  <div class="kiwify-section" id="kiwify-upsell-OrOcxPa" data-upsell-url="https://appsell-software.com/login_app/sacred-gate-codes" data-downsell-url="https://appsell-software.com/login_app/sacred-gate-codes">
 
-  <div class="security-bar">
-    <span class="security-item">🔒 Secure Checkout</span>
-    <span class="security-item">🛡️ 60-Day Guarantee</span>
-    <span class="security-item">⚡ Instant Access</span>
+    <button id="kiwify-upsell-trigger-OrOcxPa" class="cta-button">
+      <span class="cta-check">✅</span>
+      <span class="cta-main-text">YES! Unlock All Seven Frequencies<br>for Just $14.50</span>
+      <span class="cta-sub-text">Complete the full divine secret — one-time payment — 60-day guarantee</span>
+    </button>
+
+    <div class="security-bar">
+      <span class="security-item">🔒 Secure Checkout</span>
+      <span class="security-item">🛡️ 60-Day Guarantee</span>
+      <span class="security-item">⚡ Instant Access</span>
+    </div>
+
+    <div class="guarantee">
+      <span class="guarantee-icon">🛡️</span>
+      <span class="guarantee-text"><strong>60-Day Money Back Guarantee.</strong> Try the frequencies risk-free. If you don't feel the power, get 100% of your money back. No questions asked.</span>
+    </div>
+
+    <p class="urgency">⚠️ This is my final offer. This price will never be available again.</p>
+
+    <div id="kiwify-upsell-cancel-trigger-OrOcxPa" class="decline-link">No thanks, I'm okay with half the secret.</div>
+
   </div>
-
-  <div class="guarantee">
-    <span class="guarantee-icon">🛡️</span>
-    <span class="guarantee-text"><strong>60-Day Money Back Guarantee.</strong> Try the frequencies risk-free. If you don't feel the power, get 100% of your money back. No questions asked.</span>
-  </div>
-
-  <p class="urgency">⚠️ This is my final offer. This price will never be available again.</p>
-
-  <!-- DECLINE: change href to your Thank You page URL -->
-  <a href="https://appsell-software.com/login_app/sacred-gate-codes" class="decline-link">No thanks, I'm okay with half the secret.</a>
 
 </div>
+
+<script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
 </body>
 </html>
