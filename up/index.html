@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, nofollow">
   <title>Important — Do Not Close This Page</title>
   <meta name="description" content="You already have access to the 7 prayers of Jesus. But I need to warn you about the healing frequencies!">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
@@ -12,14 +12,6 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-  <link rel="preload" href="https://scripts.converteai.net/3955d996-4714-432f-a45d-a92003d6a0a7/players/6a202b7a19dc3c42874713ee/v4/player.js" as="script">
-  <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="preload" href="https://cdn.converteai.net/3955d996-4714-432f-a45d-a92003d6a0a7/6a202b67c726a691a0681987/main.m3u8" as="fetch">
-  <link rel="dns-prefetch" href="https://cdn.converteai.net">
-  <link rel="dns-prefetch" href="https://scripts.converteai.net">
-  <link rel="dns-prefetch" href="https://images.converteai.net">
-  <link rel="dns-prefetch" href="https://license.vturb.com">
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -37,7 +29,6 @@
       user-select:none;
       -webkit-user-select:none;
       -moz-user-select:none;
-      /* Força layout vertical mesmo se Vturb aplicar flex */
       display:flex !important;
       flex-direction:column !important;
       align-items:stretch !important;
@@ -46,7 +37,7 @@
     img { -webkit-user-drag:none; user-select:none; pointer-events:none; }
     a { text-decoration:none; color:inherit; }
 
-    /* ========== PAGE WRAPPER (blindagem total) ========== */
+    /* ========== PAGE WRAPPER ========== */
     #upsell-page {
       display:block !important;
       position:relative !important;
@@ -140,16 +131,8 @@
       text-align:center !important;
       overflow:visible;
     }
-    #upsell-video vturb-smartplayer {
-      display:block !important;
-      position:relative !important;
-      width:100% !important;
-      max-width:460px !important;
-      margin:0 auto !important;
-    }
     @media(max-width:600px) {
       #upsell-video { width:96% !important; max-width:100% !important; }
-      #upsell-video vturb-smartplayer { max-width:100% !important; }
     }
 
     /* ========== FOOTER ========== */
@@ -166,7 +149,6 @@
 </head>
 <body>
 
-  <!-- WRAPPER BLINDADO — todo o conteúdo aqui dentro -->
   <div id="upsell-page">
 
     <!-- URGENCY BAR -->
@@ -182,51 +164,97 @@
         But I need to warn you about the healing frequencies!
       </h1>
 
-      <!-- VIDEO (UPSELL 1) -->
+      <!-- VIDEO (UPSELL 1 — HorizonPlayer) -->
       <div id="upsell-video">
-        <vturb-smartplayer id="vid-6a202b7a19dc3c42874713ee" style="display:block;margin:0 auto;width:100%;max-width:460px"></vturb-smartplayer>
-        <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/3955d996-4714-432f-a45d-a92003d6a0a7/players/6a202b7a19dc3c42874713ee/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+        <div data-horizon-player="466789ae-141c-4d54-81ff-97072b7de9c2"></div>
+        <script src="https://player.imhorizongroup.site/player/horizon-player.js?v=4" async></script>
       </div>
     </div>
 
     <!-- FOOTER -->
     <div id="upsell-footer">
-      All rights reserved © <span id="footerYear"></span>
+      All rights reserved &copy; <span id="footerYear"></span>
     </div>
 
   </div>
-  <!-- FIM DO WRAPPER -->
 
   <script>
     document.getElementById('footerYear').textContent = new Date().getFullYear();
 
-    /* Anti back-button */
+    /* Anti back-button → redireciona pro downsell 1 */
     (function() {
       history.pushState(null, '', location.href);
       window.addEventListener('popstate', function() {
         history.pushState(null, '', location.href);
-        window.location.href = 'back.html';
+        window.location.href = 'D1.html';
       });
     })();
 
-    /* Protections */
+    /* Anti-DevTools */
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'F12') { e.preventDefault(); return false; }
-      if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
-      if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
-      if (e.ctrlKey && e.key === 's') { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); return false; }
+      if (e.ctrlKey && ['U','S'].includes(e.key.toUpperCase())) { e.preventDefault(); return false; }
     });
     document.addEventListener('dragstart', function(e) { e.preventDefault(); });
-    (function() {
-      var threshold = 160;
-      setInterval(function() {
-        if (window.outerWidth - window.innerWidth > threshold ||
-            window.outerHeight - window.innerHeight > threshold) {
-          document.body.innerHTML = '';
-        }
-      }, 1500);
-    })();
+  </script>
+
+  <!-- ============================================ -->
+  <!-- HORIZON TRACKING — Upsell 1                 -->
+  <!-- ============================================ -->
+  <script>
+  (function(){
+    var BEACON_URL = 'https://n8n.imhorizongroup.site/webhook/horizon-tracking';
+    var PAGE_SLUG = 'up1';
+
+    /* Ler cookie */
+    function gc(n) {
+      var m = document.cookie.match(new RegExp('(^| )' + n + '=([^;]+)'));
+      return m ? decodeURIComponent(m[2]) : '';
+    }
+
+    /* Visitor ID: prioriza _hz_vid cookie, fallback _vid localStorage */
+    var vid = gc('_hz_vid') || localStorage.getItem('_vid') || '';
+    if (!vid) {
+      vid = 'vid_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
+      localStorage.setItem('_vid', vid);
+    }
+
+    var fbc = gc('_fbc') || '';
+    var fbp = gc('_fbp') || '';
+
+    function eid(name) {
+      return name + '_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    }
+
+    function send(eventName, extra) {
+      var payload = {
+        vi: vid,
+        en: eventName,
+        ei: eid(eventName),
+        et: Math.floor(Date.now() / 1000),
+        fc: fbc,
+        fp: fbp,
+        ua: navigator.userAgent,
+        pu: window.location.href,
+        pr: document.referrer,
+        sl: PAGE_SLUG,
+        cd: extra || {}
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(BEACON_URL, new Blob([JSON.stringify(payload)], {type: 'text/plain'}));
+      } else {
+        fetch(BEACON_URL, {method:'POST', body:JSON.stringify(payload), mode:'no-cors', keepalive:true}).catch(function(){});
+      }
+    }
+
+    /* PageView imediato */
+    send('PageView');
+
+    /* ViewContent após 10s (engajamento) */
+    setTimeout(function() { send('ViewContent'); }, 10000);
+  })();
   </script>
 
 </body>
