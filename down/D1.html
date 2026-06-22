@@ -313,9 +313,9 @@
   </div>
 
   <!-- KIWIFY DOWNSELL 1 — IDs e data-* são funcionais, não alterar -->
-  <div class="kiwify-section" id="kiwify-upsell-HGIpBds" data-upsell-url="" data-downsell-url="https://divinemade.online/down/D2">
+  <div class="kiwify-section" id="kiwify-upsell-ybvRrbA" data-upsell-url="https://divinemade.online/up/back" data-downsell-url="https://divinemade.online/up/back">
 
-    <button id="kiwify-upsell-trigger-HGIpBds" class="cta-button">
+    <button id="kiwify-upsell-trigger-ybvRrbA" class="cta-button">
       <span class="cta-check">✅</span>
       <span class="cta-main-text">YES! Give Me The Song of the Angels<br>for Just $34.50</span>
       <span class="cta-sub-text">Instant access — one-time payment — 60-day guarantee</span>
@@ -334,7 +334,7 @@
 
     <p class="urgency">⚠️ This half-price offer disappears the moment you leave this page.</p>
 
-    <div id="kiwify-upsell-cancel-trigger-HGIpBds" class="decline-link">No thanks, I'll pray without the frequencies.</div>
+    <div id="kiwify-upsell-cancel-trigger-ybvRrbA" class="decline-link">No thanks, I'll pray without the frequencies.</div>
 
   </div>
 
@@ -407,7 +407,7 @@
   setTimeout(function() { send('ViewContent'); }, 5000);
 
   /* Rastrear clique no CTA */
-  var ctaBtn = document.getElementById('kiwify-upsell-trigger-HGIpBds');
+  var ctaBtn = document.getElementById('kiwify-upsell-trigger-ybvRrbA');
   if (ctaBtn) {
     ctaBtn.addEventListener('click', function() {
       send('InitiateCheckout', {value: 34.50, currency: 'USD', content_name: 'Downsell 1 - Song of Angels'});
@@ -415,7 +415,7 @@
   }
 
   /* Rastrear clique no decline */
-  var declineBtn = document.getElementById('kiwify-upsell-cancel-trigger-HGIpBds');
+  var declineBtn = document.getElementById('kiwify-upsell-cancel-trigger-ybvRrbA');
   if (declineBtn) {
     declineBtn.addEventListener('click', function() {
       send('ViewContent', {action: 'decline_d1'});
