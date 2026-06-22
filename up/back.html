@@ -12,6 +12,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://player.imhorizongroup.site" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.10.0/video.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.10.0/video-js.min.css" as="style">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -168,7 +172,7 @@
       <!-- VIDEO (UPSELL 2 — HorizonPlayer) -->
       <div id="upsell-video">
         <div data-horizon-player="1fe8a114-71ee-4b44-a316-921e67b77065"></div>
-        <script src="https://player.imhorizongroup.site/player/horizon-player.js?v=4" async></script>
+        <script src="https://player.imhorizongroup.site/player/horizon-player.js?v=5" async></script>
       </div>
     </div>
 
@@ -186,7 +190,7 @@
     history.pushState(null, '', location.href);
     window.addEventListener('popstate', function() {
       history.pushState(null, '', location.href);
-      window.location.href = 'D2.html';
+      window.location.href = '/down/D2';
     });
 
     /* Anti-DevTools */
