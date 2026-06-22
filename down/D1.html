@@ -149,6 +149,7 @@
       0 4px 15px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
     animation: button-pulse 2s ease-in-out infinite;
+    font-family: inherit;
   }
 
   @keyframes button-pulse {
@@ -238,6 +239,9 @@
     cursor: pointer;
     text-align: center;
     font-style: italic;
+    background: none;
+    border: none;
+    font-family: 'Lora', Georgia, serif;
   }
 
   .decline-link:hover { color: #7a7060; }
@@ -308,8 +312,8 @@
     <span class="savings">You save 50% — this page only</span>
   </div>
 
-  <!-- KIWIFY UPSELL SDK -->
-  <div class="kiwify-section" id="kiwify-upsell-HGIpBds" data-upsell-url="" data-downsell-url="https://divinemade.online/up/back">
+  <!-- KIWIFY DOWNSELL 1 — IDs e data-* são funcionais, não alterar -->
+  <div class="kiwify-section" id="kiwify-upsell-HGIpBds" data-upsell-url="" data-downsell-url="https://divinemade.online/down/D2">
 
     <button id="kiwify-upsell-trigger-HGIpBds" class="cta-button">
       <span class="cta-check">✅</span>
