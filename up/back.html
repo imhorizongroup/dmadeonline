@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <meta name="robots" content="noindex, nofollow">
-  <title>Important — Do Not Close This Page</title>
-  <meta name="description" content="You already have access to the 7 prayers of Jesus. But I need to warn you about the healing frequencies!">
+  <title>Wait — Special Offer</title>
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -14,9 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
   <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-  <link rel="preload" href="https://scripts.converteai.net/6e5396b4-952a-433c-b656-fb498ac602ae/players/6a3949c91004c538c907dbf2/v4/player.js" as="script">
+  <link rel="preload" href="https://scripts.converteai.net/6e5396b4-952a-433c-b656-fb498ac602ae/players/6a3949b5daaab420ed2a4b02/v4/player.js" as="script">
   <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-  <link rel="preload" href="https://cdn.converteai.net/6e5396b4-952a-433c-b656-fb498ac602ae/6a3949b68200567dfd3e0cd8/main.m3u8" as="fetch">
+  <link rel="preload" href="https://cdn.converteai.net/6e5396b4-952a-433c-b656-fb498ac602ae/6a3949ae1299d5533b3af81d/main.m3u8" as="fetch">
   <link rel="dns-prefetch" href="https://cdn.converteai.net">
   <link rel="dns-prefetch" href="https://scripts.converteai.net">
   <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -152,6 +151,8 @@
       padding:40px 20px;
       color:rgba(255,255,255,0.2);
       font-size:12px;
+      float:none !important;
+      transform:none !important;
     }
   </style>
 </head>
@@ -161,18 +162,18 @@
 
     <!-- URGENCY BAR -->
     <div id="upsell-urgency-bar">
-      <span class="yellow">ATTENTION</span>: DO NOT CLOSE OR REFRESH THIS PAGE, AS IT COULD CAUSE ERRORS IN YOUR PURCHASE.
+      <span class="yellow">WAIT</span>: DO NOT CLOSE THIS PAGE — WATCH THIS IMPORTANT MESSAGE BEFORE LEAVING.
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="upsell-main">
       <h1 id="upsell-headline">
         <span class="important">IMPORTANT:</span>
-        You already have access to the <span class="orange-highlight">7 prayers of Jesus...</span>
-        But I need to warn you about the healing frequencies!
+        You were about to miss the <span class="orange-highlight">healing frequencies...</span>
+        Watch this short message before you go!
       </h1>
 
-      <!-- VIDEO (UPSELL 1 — HorizonPlayer) -->
+      <!-- VIDEO (UPSELL 2 — HorizonPlayer) -->
       <div id="upsell-video">
 
       </div>
@@ -188,14 +189,12 @@
   <script>
     document.getElementById('footerYear').textContent = new Date().getFullYear();
 
-    /* Anti back-button → redireciona pro downsell 1 */
-    (function() {
+    /* Anti back-button → redireciona pro downsell 2 */
+    history.pushState(null, '', location.href);
+    window.addEventListener('popstate', function() {
       history.pushState(null, '', location.href);
-      window.addEventListener('popstate', function() {
-        history.pushState(null, '', location.href);
-        window.location.href = '/down/D1';
-      });
-    })();
+      window.location.href = '/down/D2';
+    });
 
     /* Anti-DevTools */
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
@@ -208,20 +207,18 @@
   </script>
 
   <!-- ============================================ -->
-  <!-- HORIZON TRACKING — Upsell 1                 -->
+  <!-- HORIZON TRACKING — Upsell 2                 -->
   <!-- ============================================ -->
   <script>
   (function(){
     var BEACON_URL = 'https://n8n.imhorizongroup.site/webhook/horizon-tracking';
-    var PAGE_SLUG = 'up1';
+    var PAGE_SLUG = 'up2';
 
-    /* Ler cookie */
     function gc(n) {
       var m = document.cookie.match(new RegExp('(^| )' + n + '=([^;]+)'));
       return m ? decodeURIComponent(m[2]) : '';
     }
 
-    /* Visitor ID: prioriza _hz_vid cookie, fallback _vid localStorage */
     var vid = gc('_hz_vid') || localStorage.getItem('_vid') || '';
     if (!vid) {
       vid = 'vid_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
@@ -256,10 +253,7 @@
       }
     }
 
-    /* PageView imediato */
     send('PageView');
-
-    /* ViewContent após 10s (engajamento) */
     setTimeout(function() { send('ViewContent'); }, 10000);
   })();
   </script>
