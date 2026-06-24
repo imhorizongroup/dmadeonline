@@ -6,7 +6,7 @@
 <title>The Intercession Bundle — Sacred Gate Codes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -210,53 +210,137 @@
     font-weight:500;
   }
 
-  /* ── CTA area ── */
-  .cta-section{
-    text-align:center;
-    margin:3rem 0 1.5rem;
-  }
-  .cta-button{
-    display:inline-block;
-    background:var(--crimson);
-    color:#fff;
-    font-family:'Playfair Display',serif;
-    font-size:1.1rem;
-    font-weight:600;
-    padding:1rem 2.5rem;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    text-decoration:none;
-    transition:background 0.3s ease, box-shadow 0.3s ease;
-    width:100%;
-    max-width:420px;
-    line-height:1.4;
-  }
-  .cta-button:hover{
-    background:var(--crimson-glow);
-    box-shadow:0 4px 24px rgba(139,0,0,0.3);
+  /* ── Kiwify CTA ── */
+  .cta-wrapper {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+    margin: 3rem auto 1.5rem;
   }
 
-  .cta-price{
-    display:block;
-    font-family:'Cormorant Garamond',serif;
-    font-size:0.9rem;
-    font-weight:400;
-    margin-top:0.3rem;
-    opacity:0.85;
+  .cta-button {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 22px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    background: linear-gradient(180deg, #4CAF50 0%, #2E7D32 50%, #1B5E20 100%);
+    box-shadow:
+      0 0 20px rgba(76, 175, 80, 0.3),
+      0 4px 15px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: button-pulse 1s ease-in-out infinite;
+    font-family: inherit;
   }
 
-  .decline{
-    display:block;
-    text-align:center;
-    margin-top:1.25rem;
-    color:var(--text-dim);
-    font-size:0.9rem;
-    text-decoration:none;
-    opacity:0.7;
-    transition:opacity 0.2s;
+  @keyframes button-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
   }
-  .decline:hover{opacity:1}
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+  }
+
+  .cta-check { font-size: 18px; margin-bottom: 2px; }
+
+  .cta-main-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .cta-sub-text {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .security-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 4px;
+  }
+
+  .security-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #6a6050;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    background: rgba(201,168,76,0.03);
+    width: 100%;
+  }
+
+  .guarantee-icon { font-size: 24px; }
+
+  .guarantee-text {
+    color: #a09880;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .guarantee-text strong { color: #c9a84c; }
+
+  .decline-link {
+    color: #5a5448;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-align: center;
+    font-style: italic;
+    background: none;
+    border: none;
+    font-family: 'Lora', Georgia, serif;
+  }
+
+  .decline-link:hover { color: #7a7060; }
 
   /* ── Pastoral note ── */
   .pastoral-note{
@@ -278,11 +362,15 @@
     .page{padding:2rem 1rem 3rem}
     .highlight{padding:1.25rem 1.15rem}
     .biblical-block{padding:1.25rem}
-    .cta-button{padding:1rem 1.5rem;font-size:1.05rem}
+    .cta-button{padding:18px 14px}
+    .cta-main-text{font-size:16px}
+    .security-bar{gap:8px}
+    .security-item{font-size:9px}
+    .guarantee{padding:10px 12px}
   }
 
   @media(prefers-reduced-motion:reduce){
-    *{transition:none !important}
+    *{transition:none !important;animation:none !important}
   }
 </style>
 </head>
@@ -439,13 +527,33 @@
     <span class="scripture-ref">James 5:16</span>
   </div>
 
-  <!-- CTA -->
-  <div class="cta-section">
-    <a href="#" class="cta-button">
-      Yes, give me the Intercession Bundle
-      <span class="cta-price">One-time payment of $29</span>
-    </a>
-    <a href="#" class="decline">No thanks, I will pray for them in my own words</a>
+  <!-- Kiwify CTA -->
+  <div id="kiwify-upsell-HGIpBds"
+       data-upsell-url="https://divinemade.online/thanks/"
+       data-downsell-url="https://divinemade.online/down/D2"
+       class="cta-wrapper">
+
+    <button id="kiwify-upsell-trigger-HGIpBds" class="cta-button">
+      <span class="cta-check">✅</span>
+      <span class="cta-main-text">YES! Give Me the Intercession Bundle<br>for Just $29</span>
+      <span class="cta-sub-text">Complete the full divine secret — added to your order now</span>
+    </button>
+
+    <div class="security-bar">
+      <span class="security-item">🔒 Secure Checkout</span>
+      <span class="security-item">🛡️ 7-Day Guarantee</span>
+      <span class="security-item">⚡ Instant Access</span>
+    </div>
+
+    <div class="guarantee">
+      <span class="guarantee-icon">🛡️</span>
+      <span class="guarantee-text"><strong>7-Day Money Back Guarantee.</strong> Try it risk-free. If you don't feel a profound change, get 100% of your money back. No questions asked.</span>
+    </div>
+
+    <div id="kiwify-upsell-cancel-trigger-HGIpBds" class="decline-link">
+      No thanks, I'll pray for them in my own words.
+    </div>
+
   </div>
 
   <!-- Pastoral note -->
@@ -457,5 +565,7 @@
   </p>
 
 </div>
+
+<script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 </body>
 </html>
