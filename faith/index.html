@@ -4,7 +4,6 @@
 
   ⚠️ BEFORE YOU PUBLISH — replace every [BRACKETED] placeholder:
     • [SELLER NAME] / [BRAND] / contact email / company address
-    • [CHECKOUT URL] on every CTA button (href="#")
     • All testimonials are SAMPLE copy — replace with REAL, verifiable
       testimonials from real customers. FTC requires they be genuine and
       reflect typical experience (or carry a clear "not typical" disclaimer).
@@ -26,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#14152E;          /* deep indigo — night before dawn */
@@ -79,6 +79,24 @@
   .cta .sub{font-weight:500;opacity:.7;font-size:14px}
   .reassure{margin-top:16px;font-size:13.5px;letter-spacing:.04em;color:var(--ivory-faint)}
 
+  /* ---------- Kiwify CTA Styles ---------- */
+  .cta-wrapper { width: 100%; margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 12px; overflow: hidden; }
+  .cta-button { margin-top: 10px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 22px 20px; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; overflow: hidden; background: linear-gradient(180deg, #4CAF50 0%, #2E7D32 50%, #1B5E20 100%); box-shadow: 0 0 20px rgba(76, 175, 80, 0.3), 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2); animation: button-pulse 1s ease-in-out infinite; font-family: inherit; }
+  @keyframes button-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+  .cta-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); animation: shimmer 3s ease-in-out infinite; }
+  @keyframes shimmer { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
+  .cta-check { font-size: 18px; margin-bottom: 2px; }
+  .cta-main-text { font-family: 'Cinzel', serif; font-weight: 800; font-size: 20px; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); letter-spacing: 0.5px; text-align: center; line-height: 1.3; }
+  .cta-sub-text { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 4px; font-style: italic; text-align: center; }
+  .security-bar { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 4px; }
+  .security-item { display: flex; align-items: center; gap: 5px; color: #a09880; font-size: 10px; letter-spacing: 0.5px; }
+  .kw-guarantee { display: flex; align-items: center; gap: 10px; padding: 10px 18px; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; background: rgba(201,168,76,0.03); width: 100%; }
+  .kw-guarantee-icon { font-size: 24px; }
+  .kw-guarantee-text { color: #a09880; font-size: 11px; line-height: 1.4; text-align: left; }
+  .kw-guarantee-text strong { color: #c9a84c; }
+  .decline-link { color: #8a8478; font-size: 12px; text-decoration: underline; cursor: pointer; transition: color 0.2s; text-align: center; font-style: italic; background: none; border: none; font-family: 'Lora', Georgia, serif; margin-top: 8px;}
+  .decline-link:hover { color: #c9a84c; }
+
   /* ---------- hero ---------- */
   .hero{padding:0 0 90px;text-align:center;overflow:hidden}
   .hero-light{
@@ -91,7 +109,6 @@
   .mark{font-family:"Fraunces";font-size:18px;letter-spacing:.32em;text-transform:uppercase;color:var(--ivory)}
   .mark span{color:var(--gold)}
   .hero-inner{position:relative;z-index:2;padding-top:34px}
-  /* the signature: an illuminated gate/arch */
   .arch{
     width:184px;height:248px;margin:0 auto 38px;position:relative;
   }
@@ -156,7 +173,6 @@
   .price small{font-size:22px;vertical-align:super;margin-right:2px;color:var(--gold)}
   .anchor{color:var(--ivory-faint);margin-top:6px;font-size:15px}
   .anchor s{color:var(--ivory-faint)}
-  .offer-card .cta{margin-top:30px;width:100%;justify-content:center}
 
   /* ---------- guarantee ---------- */
   .guarantee{display:grid;grid-template-columns:84px 1fr;gap:28px;align-items:center;max-width:740px;margin:0 auto;
@@ -207,6 +223,11 @@
     .item .val{text-align:left}
     .guarantee{grid-template-columns:1fr;text-align:center;justify-items:center}
     .offer-card{padding:36px 26px}
+    .cta-button { padding: 18px 14px; } 
+    .cta-main-text { font-size: 16px; } 
+    .security-bar { gap: 8px; } 
+    .security-item { font-size: 9px; } 
+    .kw-guarantee { padding: 10px 12px; }
   }
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
@@ -333,8 +354,36 @@
       <div class="anchor">Total value <s>$112</s></div>
       <div class="price"><small>$</small>39</div>
       <div class="anchor">One-time payment · Instant access · Yours to keep forever</div>
-      <a class="cta" href="#" data-checkout>Get Sacred Gates Codes <span class="sub">— $39</span></a>
-      <p class="reassure">Secure checkout · 60-day money-back guarantee</p>
+      
+      <!-- INÍCIO: Kiwify Upsell CTA Substituído -->
+      <div id="kiwify-upsell-UB7zqPC"
+           data-upsell-url="https://divinemade.online/up/back"
+           data-downsell-url="https://divinemade.online/down/D1"
+           class="cta-wrapper">
+
+        <button id="kiwify-upsell-trigger-UB7zqPC" class="cta-button">
+          <span class="cta-check">✅</span>
+          <span class="cta-main-text">YES! Unlock The Song of the Angels<br>for Just $69</span>
+          <span class="cta-sub-text">Instant access — added to your order now</span>
+        </button>
+
+        <div class="security-bar">
+          <span class="security-item">🔒 Secure Checkout</span>
+          <span class="security-item">🛡️ 90-Day Guarantee</span>
+          <span class="security-item">⚡ Instant Access</span>
+        </div>
+
+        <div class="kw-guarantee">
+          <span class="kw-guarantee-icon">🛡️</span>
+          <span class="kw-guarantee-text"><strong>90-Day Money Back Guarantee.</strong> Try it risk-free. If you don't feel a profound change, get 100% of your money back. No questions asked.</span>
+        </div>
+
+        <div id="kiwify-upsell-cancel-trigger-UB7zqPC" class="decline-link">
+          No thanks, I'll continue with just the prayers alone.
+        </div>
+      </div>
+      <!-- FIM: Kiwify Upsell CTA Substituído -->
+
     </div>
   </div>
 </section>
@@ -375,7 +424,7 @@
     <div class="read reveal" style="text-align:center;margin-bottom:46px">
       <h2>The room doesn't have to stay quiet</h2>
       <p>You can keep waiting for the connection to come back on its own — or you can walk through the first gate tonight, and start finding your way back, ten quiet minutes at a time.</p>
-      <p style="margin-top:30px"><a class="cta" href="#" data-checkout>Begin the Journey <span class="sub">— $39, yours forever</span></a></p>
+      <p style="margin-top:30px"><a class="cta" href="#offer">Begin the Journey <span class="sub">— $39, yours forever</span></a></p>
       <p class="reassure">Instant access · 60-day money-back guarantee · One-time payment</p>
     </div>
     <div class="ps reveal">
@@ -402,6 +451,7 @@
   </div>
 </footer>
 
+<script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   // gentle scroll reveal
