@@ -4,6 +4,7 @@
 
   ⚠️ BEFORE YOU PUBLISH — replace every [BRACKETED] placeholder:
     • [SELLER NAME] / [BRAND] / contact email / company address
+    • [CHECKOUT URL] on every CTA button (href="#")
     • All testimonials are SAMPLE copy — replace with REAL, verifiable
       testimonials from real customers. FTC requires they be genuine and
       reflect typical experience (or carry a clear "not typical" disclaimer).
@@ -24,19 +25,18 @@
 <title>Sacred Gates Codes — A 21-Day Journey Back to His Presence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=Cinzel:wght@600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#14152E;          /* deep indigo — night before dawn */
-    --ink-2:#1E2049;         /* raised panel */
+    --ink:#14152E;
+    --ink-2:#1E2049;
     --ink-3:#272a5e;
-    --gold:#D8B468;          /* sacred light */
+    --gold:#D8B468;
     --gold-bright:#F0DCA8;
     --ivory:#F4EFE3;
     --ivory-dim:rgba(244,239,227,.74);
     --ivory-faint:rgba(244,239,227,.5);
-    --sage:#93A99C;          /* calm secondary */
+    --sage:#93A99C;
     --line:rgba(216,180,104,.22);
     --maxw:1120px;
     --read:720px;
@@ -64,24 +64,63 @@
   .lede{font-size:21px;line-height:1.65;color:var(--ivory)}
   section{position:relative}
 
-  /* ---------- Kiwify CTA Styles (NOVO BOTÃO) ---------- */
-  .cta-wrapper { width: 100%; margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 12px; overflow: hidden; }
-  .cta-button { margin-top: 10px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 22px 20px; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; overflow: hidden; background: linear-gradient(180deg, #4CAF50 0%, #2E7D32 50%, #1B5E20 100%); box-shadow: 0 0 20px rgba(76, 175, 80, 0.3), 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2); animation: button-pulse 1s ease-in-out infinite; font-family: inherit; }
-  @keyframes button-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
-  .cta-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); animation: shimmer 3s ease-in-out infinite; }
-  @keyframes shimmer { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
-  .cta-check { font-size: 18px; margin-bottom: 2px; }
-  .cta-main-text { font-family: 'Cinzel', serif; font-weight: 800; font-size: 20px; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); letter-spacing: 0.5px; text-align: center; line-height: 1.3; }
-  .cta-sub-text { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 4px; font-style: italic; text-align: center; }
-  .security-bar { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 4px; }
-  .security-item { display: flex; align-items: center; gap: 5px; color: #a09880; font-size: 10px; letter-spacing: 0.5px; }
-  .kw-guarantee { display: flex; align-items: center; gap: 10px; padding: 10px 18px; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; background: rgba(201,168,76,0.03); width: 100%; }
-  .kw-guarantee-icon { font-size: 24px; }
-  .kw-guarantee-text { color: #a09880; font-size: 11px; line-height: 1.4; text-align: left; }
-  .kw-guarantee-text strong { color: #c9a84c; }
-  .decline-link { color: #8a8478; font-size: 12px; text-decoration: underline; cursor: pointer; transition: color 0.2s; text-align: center; font-style: italic; background: none; border: none; font-family: 'Lora', Georgia, serif; margin-top: 8px;}
-  .decline-link:hover { color: #c9a84c; }
-  .reassure{margin-top:16px;font-size:13.5px;letter-spacing:.04em;color:var(--ivory-faint)}
+  /* ---------- Kiwify-style CTA buttons ---------- */
+  .cta-wrapper{
+    display:flex;flex-direction:column;align-items:center;
+    gap:12px;width:100%;max-width:480px;margin:0 auto;overflow:hidden;
+  }
+  .cta-button{
+    margin-top:10px;position:relative;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;width:100%;padding:22px 20px;
+    border:none;border-radius:12px;cursor:pointer;text-decoration:none;overflow:hidden;
+    background:linear-gradient(180deg,#4CAF50 0%,#2E7D32 50%,#1B5E20 100%);
+    box-shadow:0 0 20px rgba(76,175,80,0.3),0 4px 15px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.2);
+    animation:button-pulse 1s ease-in-out infinite;
+    font-family:'Lora',Georgia,serif;
+  }
+  @keyframes button-pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.03)}
+  }
+  .cta-button::before{
+    content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+    animation:shimmer 3s ease-in-out infinite;
+  }
+  @keyframes shimmer{
+    0%{left:-100%}
+    50%{left:150%}
+    100%{left:150%}
+  }
+  .cta-check{font-size:18px;margin-bottom:2px}
+  .cta-main-text{
+    font-family:'Cinzel',serif;font-weight:800;font-size:20px;color:#fff;
+    text-shadow:0 2px 4px rgba(0,0,0,0.3);letter-spacing:0.5px;text-align:center;line-height:1.3;
+  }
+  .cta-sub-text{
+    font-family:'Lora',serif;font-size:12px;color:rgba(255,255,255,0.75);
+    margin-top:4px;font-style:italic;text-align:center;
+  }
+  .security-bar{
+    display:flex;align-items:center;justify-content:center;gap:16px;margin-top:4px;
+  }
+  .security-item{
+    display:flex;align-items:center;gap:5px;color:#6a6050;font-size:10px;letter-spacing:0.5px;
+  }
+  .cta-guarantee{
+    display:flex;align-items:center;gap:10px;padding:10px 18px;
+    border:1px solid rgba(201,168,76,0.2);border-radius:8px;
+    background:rgba(201,168,76,0.03);width:100%;
+  }
+  .cta-guarantee-icon{font-size:24px}
+  .cta-guarantee-text{color:#a09880;font-size:11px;line-height:1.4;font-family:'Lora',Georgia,serif}
+  .cta-guarantee-text strong{color:#c9a84c}
+  .decline-link{
+    color:#5a5448;font-size:12px;text-decoration:underline;cursor:pointer;
+    transition:color 0.2s;text-align:center;font-style:italic;background:none;
+    border:none;font-family:'Lora',Georgia,serif;
+  }
+  .decline-link:hover{color:#7a7060}
 
   /* ---------- hero ---------- */
   .hero{padding:0 0 90px;text-align:center;overflow:hidden}
@@ -95,14 +134,11 @@
   .mark{font-family:"Fraunces";font-size:18px;letter-spacing:.32em;text-transform:uppercase;color:var(--ivory)}
   .mark span{color:var(--gold)}
   .hero-inner{position:relative;z-index:2;padding-top:34px}
-  .arch{
-    width:184px;height:248px;margin:0 auto 38px;position:relative;
-  }
+  .arch{width:184px;height:248px;margin:0 auto 38px;position:relative}
   .arch svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 26px rgba(240,220,168,.45))}
   h1{font-size:clamp(40px,6.6vw,72px);max-width:880px;margin:0 auto;}
   h1 em{font-style:italic;color:var(--gold-bright)}
   .hero p{max-width:600px;margin:26px auto 38px;font-size:20px}
-  .hero .reassure{margin-top:18px}
 
   /* ---------- generic section rhythm ---------- */
   .block{padding:92px 0}
@@ -160,7 +196,7 @@
   .anchor{color:var(--ivory-faint);margin-top:6px;font-size:15px}
   .anchor s{color:var(--ivory-faint)}
 
-  /* ---------- guarantee ---------- */
+  /* ---------- guarantee section ---------- */
   .guarantee{display:grid;grid-template-columns:84px 1fr;gap:28px;align-items:center;max-width:740px;margin:0 auto;
     background:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:34px 36px}
   .seal{width:84px;height:84px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -209,15 +245,17 @@
     .item .val{text-align:left}
     .guarantee{grid-template-columns:1fr;text-align:center;justify-items:center}
     .offer-card{padding:36px 26px}
-    .cta-button { padding: 18px 14px; } 
-    .cta-main-text { font-size: 16px; } 
-    .security-bar { gap: 8px; } 
-    .security-item { font-size: 9px; } 
-    .kw-guarantee { padding: 10px 12px; }
+    .cta-button{padding:18px 14px}
+    .cta-main-text{font-size:16px}
+    .security-bar{gap:8px}
+    .security-item{font-size:9px}
+    .cta-guarantee{padding:10px 12px}
   }
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
     html{scroll-behavior:auto}
+    .cta-button{animation:none}
+    .cta-button::before{animation:none}
   }
 </style>
 </head>
@@ -244,15 +282,25 @@
     <p class="eyebrow">A 21-Day Guided Devotional Journey</p>
     <h1>When Your Prayers Feel Distant, There Is a <em>Way Back</em></h1>
     <p>Sacred Gates Codes walks you through seven scripture-rooted "gates" — with guided prayers, daily declarations, and gentle reflections that help you rebuild a steady, honest walk with God.</p>
-    
-    <!-- Link âncora com visual do novo botão -->
-    <a href="#offer" class="cta-button" style="max-width: 480px; margin: 0 auto; text-decoration: none;">
-      <span class="cta-check">✅</span>
-      <span class="cta-main-text">YES! Unlock The Song of the Angels<br>for Just $69</span>
-      <span class="cta-sub-text">Instant access — added to your order now</span>
-    </a>
 
-    <p class="reassure">Instant digital access · 60-day money-back guarantee · One-time payment, no subscription</p>
+    <!-- HERO CTA -->
+    <div class="cta-wrapper" style="margin-top:10px">
+      <button class="cta-button" onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'})">
+        <span class="cta-check">✅</span>
+        <span class="cta-main-text">YES! Begin the Journey<br>for Just $39</span>
+        <span class="cta-sub-text">Instant digital access — yours forever</span>
+      </button>
+      <div class="security-bar">
+        <span class="security-item">🔒 Secure Checkout</span>
+        <span class="security-item">🛡️ 7-Day Guarantee</span>
+        <span class="security-item">⚡ Instant Access</span>
+      </div>
+      <div class="cta-guarantee">
+        <span class="cta-guarantee-icon">🛡️</span>
+        <span class="cta-guarantee-text"><strong>7-Day Money Back Guarantee.</strong> Try it risk-free. If it's not for you, get 100% of your money back. No questions asked.</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -346,35 +394,24 @@
       <div class="anchor">Total value <s>$112</s></div>
       <div class="price"><small>$</small>39</div>
       <div class="anchor">One-time payment · Instant access · Yours to keep forever</div>
-      
-      <!-- INÍCIO: Kiwify Upsell CTA Substituído -->
-      <div id="kiwify-upsell-UB7zqPC"
-           data-upsell-url="https://divinemade.online/up/back"
-           data-downsell-url="https://divinemade.online/down/D1"
-           class="cta-wrapper">
 
-        <button id="kiwify-upsell-trigger-UB7zqPC" class="cta-button">
+      <!-- OFFER CTA -->
+      <div class="cta-wrapper" style="margin-top:30px">
+        <button class="cta-button" onclick="window.location.href='#'">
           <span class="cta-check">✅</span>
-          <span class="cta-main-text">YES! Unlock The Song of the Angels<br>for Just $69</span>
+          <span class="cta-main-text">YES! Get Sacred Gates Codes<br>for Just $39</span>
           <span class="cta-sub-text">Instant access — added to your order now</span>
         </button>
-
         <div class="security-bar">
           <span class="security-item">🔒 Secure Checkout</span>
-          <span class="security-item">🛡️ 90-Day Guarantee</span>
+          <span class="security-item">🛡️ 7-Day Guarantee</span>
           <span class="security-item">⚡ Instant Access</span>
         </div>
-
-        <div class="kw-guarantee">
-          <span class="kw-guarantee-icon">🛡️</span>
-          <span class="kw-guarantee-text"><strong>90-Day Money Back Guarantee.</strong> Try it risk-free. If you don't feel a profound change, get 100% of your money back. No questions asked.</span>
-        </div>
-
-        <div id="kiwify-upsell-cancel-trigger-UB7zqPC" class="decline-link">
-          No thanks, I'll continue with just the prayers alone.
+        <div class="cta-guarantee">
+          <span class="cta-guarantee-icon">🛡️</span>
+          <span class="cta-guarantee-text"><strong>7-Day Money Back Guarantee.</strong> Try it risk-free. If it's not for you, get 100% of your money back. No questions asked.</span>
         </div>
       </div>
-      <!-- FIM: Kiwify Upsell CTA Substituído -->
 
     </div>
   </div>
@@ -384,10 +421,10 @@
 <section class="block tight">
   <div class="wrap reveal">
     <div class="guarantee">
-      <div class="seal" aria-hidden="true">60-DAY<br>GUARANTEE</div>
+      <div class="seal" aria-hidden="true">7-DAY<br>GUARANTEE</div>
       <div>
-        <h3>Walk the whole journey at no risk</h3>
-        <p>Take the full 60 days. Walk every gate. If it doesn't help you feel closer to God and more at peace, email us and we'll refund every cent — and you keep the bonuses. The only thing we ask is that you actually try it.</p>
+        <h3>Walk the first gate at no risk</h3>
+        <p>Take a full 7 days. Begin the journey. If it doesn't help you feel closer to God and more at peace, email us and we'll refund every cent — and you keep the bonuses. The only thing we ask is that you actually try it.</p>
       </div>
     </div>
   </div>
@@ -405,7 +442,7 @@
       <details><summary>How much time does it take each day?</summary><p>About ten minutes. The journey is designed to fit real, busy life — not to add one more thing you'll feel guilty about missing.</p></details>
       <details><summary>How do I receive it?</summary><p>It's fully digital. The moment you complete checkout, you get instant access to the guide, the audio companion, the journal, and all bonuses to download and keep.</p></details>
       <details><summary>Is this a subscription?</summary><p>No. It's a single one-time payment. There is nothing to cancel and no recurring charge.</p></details>
-      <details><summary>What if it doesn't help me?</summary><p>Then you pay nothing. You have 7 days to walk the journey, and if it isn't for you, one email gets you a full refund — bonuses included.</p></details>
+      <details><summary>What if it doesn't help me?</summary><p>Then you pay nothing. You have 7 days to begin the journey, and if it isn't for you, one email gets you a full refund — bonuses included.</p></details>
     </div>
   </div>
 </section>
@@ -416,18 +453,28 @@
     <div class="read reveal" style="text-align:center;margin-bottom:46px">
       <h2>The room doesn't have to stay quiet</h2>
       <p>You can keep waiting for the connection to come back on its own — or you can walk through the first gate tonight, and start finding your way back, ten quiet minutes at a time.</p>
-      
-      <!-- Link âncora com visual do novo botão -->
-      <a href="#offer" class="cta-button" style="max-width: 480px; margin: 30px auto 0; text-decoration: none;">
-        <span class="cta-check">✅</span>
-        <span class="cta-main-text">YES! Unlock The Song of the Angels<br>for Just $69</span>
-        <span class="cta-sub-text">Instant access — added to your order now</span>
-      </a>
 
-      <p class="reassure">Instant access · 7-day money-back guarantee · One-time payment</p>
+      <!-- FINAL CTA -->
+      <div class="cta-wrapper" style="margin-top:30px">
+        <button class="cta-button" onclick="window.location.href='#'">
+          <span class="cta-check">✅</span>
+          <span class="cta-main-text">YES! Begin the Journey<br>for Just $39</span>
+          <span class="cta-sub-text">Instant access — yours forever</span>
+        </button>
+        <div class="security-bar">
+          <span class="security-item">🔒 Secure Checkout</span>
+          <span class="security-item">🛡️ 7-Day Guarantee</span>
+          <span class="security-item">⚡ Instant Access</span>
+        </div>
+        <div class="cta-guarantee">
+          <span class="cta-guarantee-icon">🛡️</span>
+          <span class="cta-guarantee-text"><strong>7-Day Money Back Guarantee.</strong> Try it risk-free. If it's not for you, get 100% of your money back. No questions asked.</span>
+        </div>
+      </div>
+
     </div>
     <div class="ps reveal">
-      <p><strong>P.S.</strong> — If you've read this far, some part of you already knows the quiet isn't where you want to stay. Sacred Gates Codes is risk-free for a full 7 days. Walk all seven gates. If it doesn't draw you closer to God, you get every cent back and keep the bonuses. The worst case is that you tried. The best case is that you find the door again.</p>
+      <p><strong>P.S.</strong> — If you've read this far, some part of you already knows the quiet isn't where you want to stay. Sacred Gates Codes is risk-free for a full 7 days. Walk the first gate. If it doesn't draw you closer to God, you get every cent back and keep the bonuses. The worst case is that you tried. The best case is that you find the door again.</p>
     </div>
   </div>
 </section>
@@ -450,7 +497,6 @@
   </div>
 </footer>
 
-<script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   // gentle scroll reveal
