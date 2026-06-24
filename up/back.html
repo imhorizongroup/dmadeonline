@@ -158,6 +158,33 @@
 </head>
 <body>
 
+  <!-- ============================================ -->
+  <!-- FIX 1: Corrigir amount=NaN na URL            -->
+  <!-- Inserido: 24/06/2026                         -->
+  <!-- Motivo: Kiwify envia amount=NaN no redirect   -->
+  <!-- pós-compra do Up1, quebrando o one-click do   -->
+  <!-- Up2. Este script corrige o parâmetro antes    -->
+  <!-- do kiwify-upsell.min.js carregar.             -->
+  <!-- ============================================ -->
+  <script>
+  (function() {
+    try {
+      var url = new URL(window.location.href);
+      var amount = url.searchParams.get('amount');
+      if (!amount || amount === 'NaN' || amount === 'null' || amount === 'undefined') {
+        url.searchParams.set('amount', '2900'); // Up2 = $29.00 em centavos
+        if (url.searchParams.get('code_senha') === 'null') {
+          url.searchParams.delete('code_senha');
+        }
+        if (url.searchParams.get('subdominio') === 'undefined') {
+          url.searchParams.delete('subdominio');
+        }
+        window.history.replaceState({}, '', url.toString());
+      }
+    } catch(e) { /* silenciar erros em browsers antigos */ }
+  })();
+  </script>
+
   <div id="upsell-page">
 
     <!-- URGENCY BAR -->
@@ -173,7 +200,7 @@
         Watch this short message before you go!
       </h1>
 
-      <!-- VIDEO (UPSELL 2 — HorizonPlayer) -->
+      <!-- VIDEO (UPSELL 2 — VTurb) -->
       <div id="upsell-video">
         <vturb-smartplayer id="vid-6a3949b5daaab420ed2a4b02" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
         <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/6e5396b4-952a-433c-b656-fb498ac602ae/players/6a3949b5daaab420ed2a4b02/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
@@ -256,6 +283,103 @@
 
     send('PageView');
     setTimeout(function() { send('ViewContent'); }, 10000);
+  })();
+  </script>
+
+  <!-- ============================================ -->
+  <!-- FIX 2: Kiwify Upsell Script na página        -->
+  <!-- Inserido: 24/06/2026                         -->
+  <!-- Motivo: O script precisa estar na página      -->
+  <!-- principal, não apenas dentro do CTA do VTurb. -->
+  <!-- Assim ele inicializa e fica pronto para       -->
+  <!-- vincular os click handlers quando o CTA       -->
+  <!-- do VTurb aparecer (botão HGIpBds).            -->
+  <!-- ============================================ -->
+  <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+
+  <!-- ============================================ -->
+  <!-- FIX 3: Fallback PerfectPay para recusas       -->
+  <!-- Inserido: 24/06/2026                         -->
+  <!-- Motivo: Se o one-click da Kiwify falhar       -->
+  <!-- (cartão recusado, erro técnico), redireciona  -->
+  <!-- o comprador para o checkout do PerfectPay     -->
+  <!-- do Up2 com dados pré-preenchidos, enquanto    -->
+  <!-- o lead ainda está aquecido.                   -->
+  <!--                                               -->
+  <!-- Up2 = Seven Frequencies = $29                 -->
+  <!-- PerfectPay: PPU38CQCO4L                       -->
+  <!-- ============================================ -->
+  <script>
+  (function() {
+    var PERFECTPAY_UP2 = 'https://go.centerpag.com/PPU38CQCO4L';
+    var FALLBACK_TIMEOUT_MS = 3000;
+    var fallbackTriggered = false;
+
+    function getUrlParam(name) {
+      try {
+        return new URLSearchParams(window.location.search).get(name) || '';
+      } catch(e) { return ''; }
+    }
+
+    function buildFallbackUrl() {
+      var name = getUrlParam('name') || '';
+      var email = getUrlParam('email') || '';
+      var url = PERFECTPAY_UP2;
+      var params = [];
+      if (name) params.push('name=' + encodeURIComponent(name));
+      if (email) params.push('email=' + encodeURIComponent(email));
+      if (params.length > 0) {
+        url += (url.indexOf('?') > -1 ? '&' : '?') + params.join('&');
+      }
+      return url;
+    }
+
+    function triggerFallback() {
+      if (fallbackTriggered) return;
+      fallbackTriggered = true;
+      window.location.href = buildFallbackUrl();
+    }
+
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (!node.querySelector) return;
+
+          var modal = node.querySelector
+            ? node.querySelector('#kiwify-upsell-modal-content')
+            : null;
+          if (!modal && node.id === 'kiwify-upsell-container') {
+            modal = node.querySelector('#kiwify-upsell-modal-content');
+          }
+
+          if (modal) {
+            setTimeout(function checkModalState() {
+              var content = document.getElementById('kiwify-upsell-modal-content');
+              if (content) {
+                var text = content.textContent || '';
+                if (text.indexOf('Thank you') > -1 || text.indexOf('Muito obrigado') > -1) {
+                  setTimeout(function() {
+                    triggerFallback();
+                  }, FALLBACK_TIMEOUT_MS);
+                }
+              }
+            }, 1000);
+          }
+        });
+      });
+    });
+
+    if (document.body) {
+      observer.observe(document.body, { childList: true, subtree: true });
+    } else {
+      document.addEventListener('DOMContentLoaded', function() {
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+    }
+
+    setTimeout(function() {
+      observer.disconnect();
+    }, 600000);
   })();
   </script>
 
