@@ -294,15 +294,112 @@
   </script>
 
   <!-- ============================================ -->
-  <!-- FIX 2: Kiwify Upsell Script na página        -->
-  <!-- Inserido: 24/06/2026                         -->
-  <!-- Motivo: O script precisa estar na página      -->
-  <!-- principal, não apenas dentro do CTA do VTurb. -->
-  <!-- Assim ele inicializa e fica pronto para       -->
-  <!-- vincular os click handlers quando o CTA       -->
-  <!-- do VTurb aparecer no tempo configurado.       -->
+  <!-- FIX 2: Kiwify Upsell Bridge Script            -->
+  <!-- Inserido: 24/06/2026 | Atualizado: 24/06/2026 -->
+  <!-- Motivo: O kiwify-upsell.min.js executa uma    -->
+  <!-- vez no carregamento e busca botões com ID      -->
+  <!-- kiwify-upsell-trigger-*. Como o CTA do VTurb  -->
+  <!-- só aparece após ~11min de vídeo, o script      -->
+  <!-- não encontra o botão e para de procurar.       -->
+  <!--                                               -->
+  <!-- Solução: MutationObserver detecta quando o    -->
+  <!-- VTurb injeta o CTA no DOM, então carrega o    -->
+  <!-- script Kiwify dinamicamente nesse momento.    -->
+  <!-- Também adiciona fallback de polling caso o    -->
+  <!-- MutationObserver não capture a injeção.       -->
   <!-- ============================================ -->
-  <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+  <script>
+  (function() {
+    var KIWIFY_SCRIPT_URL = 'https://snippets.kiwify.com/upsell/upsell.min.js';
+    var UPSELL_BUTTON_ID_PREFIX = 'kiwify-upsell-trigger-';
+    var scriptLoaded = false;
+    var maxAttempts = 360; // 30 minutos (a cada 5s)
+    var attemptCount = 0;
+
+    function loadKiwifyScript() {
+      if (scriptLoaded) return;
+      scriptLoaded = true;
+
+      // Remover script anterior se existir (cache-bust)
+      var existing = document.querySelector('script[src*="kiwify.com/upsell"]');
+      if (existing) existing.parentNode.removeChild(existing);
+
+      // Carregar script fresco
+      var s = document.createElement('script');
+      s.src = KIWIFY_SCRIPT_URL + '?t=' + Date.now(); // cache-bust
+      s.onload = function() {
+        console.log('[HORIZON] Kiwify upsell script loaded - button detected');
+      };
+      s.onerror = function() {
+        console.log('[HORIZON] Kiwify script failed to load, retrying...');
+        scriptLoaded = false; // permitir retry
+      };
+      document.body.appendChild(s);
+    }
+
+    function findUpsellButton() {
+      // Procurar por qualquer elemento com ID que começa com kiwify-upsell-trigger-
+      var allElements = document.querySelectorAll('[id^="' + UPSELL_BUTTON_ID_PREFIX + '"]');
+      return allElements.length > 0;
+    }
+
+    // MÉTODO 1: MutationObserver — detecta quando o VTurb injeta o CTA
+    var observer = new MutationObserver(function(mutations) {
+      if (scriptLoaded) return;
+      for (var i = 0; i < mutations.length; i++) {
+        var mutation = mutations[i];
+        // Verificar nós adicionados
+        for (var j = 0; j < mutation.addedNodes.length; j++) {
+          var node = mutation.addedNodes[j];
+          if (!node.querySelector && !node.id) continue;
+
+          // Verificar se o próprio nó é o botão
+          if (node.id && node.id.indexOf(UPSELL_BUTTON_ID_PREFIX) === 0) {
+            loadKiwifyScript();
+            return;
+          }
+
+          // Verificar se o botão está dentro do nó adicionado
+          if (node.querySelector) {
+            var btn = node.querySelector('[id^="' + UPSELL_BUTTON_ID_PREFIX + '"]');
+            if (btn) {
+              loadKiwifyScript();
+              return;
+            }
+          }
+        }
+      }
+    });
+
+    if (document.body) {
+      observer.observe(document.body, { childList: true, subtree: true });
+    } else {
+      document.addEventListener('DOMContentLoaded', function() {
+        observer.observe(document.body, { childList: true, subtree: true });
+      });
+    }
+
+    // MÉTODO 2: Polling fallback — caso o MutationObserver não capture
+    // (alguns frameworks injetam conteúdo de formas que o observer não pega)
+    var pollInterval = setInterval(function() {
+      attemptCount++;
+      if (scriptLoaded || attemptCount > maxAttempts) {
+        clearInterval(pollInterval);
+        return;
+      }
+      if (findUpsellButton()) {
+        clearInterval(pollInterval);
+        loadKiwifyScript();
+      }
+    }, 5000); // Verifica a cada 5 segundos
+
+    // Cleanup após 30 minutos
+    setTimeout(function() {
+      observer.disconnect();
+      clearInterval(pollInterval);
+    }, 1800000);
+  })();
+  </script>
 
   <!-- ============================================ -->
   <!-- FIX 3: Fallback PerfectPay para recusas       -->
